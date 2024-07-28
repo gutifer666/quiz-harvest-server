@@ -1,0 +1,23 @@
+@startuml
+
+state INITIAL
+state OPEN_APP
+
+[*] -[#green]-> INITIAL
+
+INITIAL -[#green]-> OPEN_APP
+    note on link
+        openApp
+    end note
+OPEN_APP -[#green]-> OPEN_APP
+    note on link
+        createTest
+        checkTest
+    end note
+
+OPEN_APP -[#green]-> [*]
+    note on link
+        closeApp
+    end note
+
+@enduml

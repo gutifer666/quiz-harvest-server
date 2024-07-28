@@ -1,0 +1,58 @@
+@startuml
+
+class QuizHarvest
+
+class User
+class UserAction
+class CreateTest{
+  subject: Subject
+  evaluation: Evaluation
+  questions: number
+}
+class TakeTest
+
+class Test
+class Question {
+  subject: Subject
+  evaluation: Evaluation
+}
+class Option {
+  correctOption: boolean
+}
+
+enum Subject{
+  databases
+  developmentEnvironments
+  workplaceTrainingAndGuidance
+  markupLanguagesAndInformationManagementSystems
+  programming
+  computerSystems
+  clientSideWebDevelopment
+  serverSideWebDevelopment
+  webApplicationDeployment
+  webInterfaceDesign
+  businessAndEntrepreneurialInitiative
+  electiveHours
+}
+enum Evaluation{
+  First
+  Second
+  All
+}
+
+QuizHarvest *-- "1" User
+QuizHarvest *-- "1" Test
+
+User --> UserAction
+UserAction <|-- CreateTest
+UserAction <|-- TakeTest
+UserAction <|-- Test
+CreateTest ..> Test
+TakeTest ..> Test
+
+Test o--> "1..*" Question
+Question *--> "4" Option
+Question --> Subject
+Question --> Evaluation
+
+@enduml

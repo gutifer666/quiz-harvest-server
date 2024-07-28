@@ -1,0 +1,30 @@
+@startuml
+
+package "View" {
+    object CreateTestView
+}
+package "Controller" {
+    object CreateTestController
+}
+package "Model" {
+    object Test
+    object Question
+}
+
+CreateTestView --> CreateTestController
+
+CreateTestController ..> Test
+  note on link
+    set()
+  end note
+
+CreateTestController ..> Question
+  note on link
+    get()
+  end note
+
+Test o-- Question
+
+
+@enduml
+

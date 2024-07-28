@@ -1,0 +1,9 @@
+@startuml
+left to right direction
+
+actor Client
+
+Client --> (createTest)
+Client --> (checkTest)
+
+@enduml

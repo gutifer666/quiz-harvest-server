@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+package "View" {
+    class DashboardView
+    class TestView
+    class CreateTestView
+    class ResultView
+}
+package "Controller" {
+    class CreateTestController
+    class CheckTestController
+}
+package "Model" {
+    class Test
+    class Question
+    class Result
+}
+
+@enduml

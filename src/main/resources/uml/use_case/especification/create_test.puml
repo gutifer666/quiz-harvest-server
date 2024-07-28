@@ -1,0 +1,32 @@
+@startuml
+skinparam noteBorderColor green
+
+state OPEN_APP
+
+OPEN_APP -[#green]-> createTest
+        note on link
+            <b>Client requests to</b>
+             - createTest
+
+            <b>Client provides</b>
+             - Subject
+             - Evaluation
+             - Number of questions
+        end note
+
+state createTest {
+    state " " as state_1
+
+    [*]-[#green]-> state_1
+
+    state_1 -[#green]-> [*]
+        note on link
+            <b>System responses</b>
+             - Test created
+        end note
+
+}
+
+@enduml
+
+
