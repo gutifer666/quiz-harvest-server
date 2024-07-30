@@ -1,4 +1,4 @@
-package trade.javiergutierrez.quizharvestserver.model.dao;
+package trade.javiergutierrez.quizharvestserver.domain.dao;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

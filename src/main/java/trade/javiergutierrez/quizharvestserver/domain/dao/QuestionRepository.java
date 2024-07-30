@@ -1,9 +1,8 @@
-package trade.javiergutierrez.quizharvestserver.model.dao;
+package trade.javiergutierrez.quizharvestserver.domain.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import trade.javiergutierrez.quizharvestserver.model.Evaluation;
-import trade.javiergutierrez.quizharvestserver.model.Subject;
-import trade.javiergutierrez.quizharvestserver.model.dao.QuestionDao;
+import trade.javiergutierrez.quizharvestserver.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.domain.Subject;
 
 import java.util.List;
 

@@ -1,6 +1,5 @@
-package trade.javiergutierrez.quizharvestserver.model;
+package trade.javiergutierrez.quizharvestserver.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

@@ -1,8 +1,8 @@
-package trade.javiergutierrez.quizharvestserver.controller;
+package trade.javiergutierrez.quizharvestserver.application;
 
 import org.springframework.stereotype.Controller;
-import trade.javiergutierrez.quizharvestserver.model.*;
-import trade.javiergutierrez.quizharvestserver.model.dao.QuestionRepository;
+import trade.javiergutierrez.quizharvestserver.domain.*;
+import trade.javiergutierrez.quizharvestserver.domain.dao.QuestionRepository;
 import trade.javiergutierrez.quizharvestserver.utils.ListQuestionDaoToListQuestion;
 
 @Controller

@@ -2,7 +2,7 @@ package trade.javiergutierrez.quizharvestserver.utils;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-import trade.javiergutierrez.quizharvestserver.model.Evaluation;
+import trade.javiergutierrez.quizharvestserver.domain.Evaluation;
 
 @Component
 public class StringToEvaluationConverter implements Converter<String, Evaluation>{

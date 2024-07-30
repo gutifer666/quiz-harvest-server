@@ -1,12 +1,13 @@
-package trade.javiergutierrez.quizharvestserver.controller;
+package trade.javiergutierrez.quizharvestserver.infrastructure;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import trade.javiergutierrez.quizharvestserver.model.Evaluation;
-import trade.javiergutierrez.quizharvestserver.model.Subject;
-import trade.javiergutierrez.quizharvestserver.model.Test;
+import trade.javiergutierrez.quizharvestserver.application.CreateTestController;
+import trade.javiergutierrez.quizharvestserver.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.domain.Subject;
+import trade.javiergutierrez.quizharvestserver.domain.Test;
 
 @RestController
 public class QuizTestController {

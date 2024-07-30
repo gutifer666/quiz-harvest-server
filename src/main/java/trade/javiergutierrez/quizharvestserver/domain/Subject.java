@@ -1,4 +1,4 @@
-package trade.javiergutierrez.quizharvestserver.model;
+package trade.javiergutierrez.quizharvestserver.domain;
 
 public enum Subject {
   DATABASES,
