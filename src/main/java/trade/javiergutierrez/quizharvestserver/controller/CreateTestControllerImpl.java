@@ -2,33 +2,30 @@ package trade.javiergutierrez.quizharvestserver.controller;
 
 import org.springframework.stereotype.Controller;
 import trade.javiergutierrez.quizharvestserver.model.*;
-import trade.javiergutierrez.quizharvestserver.model.dao.QuestionDao;
 import trade.javiergutierrez.quizharvestserver.model.dao.QuestionRepository;
 import trade.javiergutierrez.quizharvestserver.utils.ListQuestionDaoToListQuestion;
-
-import java.util.List;
 
 @Controller
 public class CreateTestControllerImpl implements CreateTestController {
 
-  private List<QuestionDao> questionsDao;
-  private QuestionRepository questionRepository;
-  private ListQuestionDaoToListQuestion listQuestionDaoToListQuestion;
+    private final QuestionRepository questionRepository;
+    private final ListQuestionDaoToListQuestion listQuestionDaoToListQuestion;
 
-  public CreateTestControllerImpl(QuestionRepository questionRepository, ListQuestionDaoToListQuestion listQuestionEntityToTest) {
+    public CreateTestControllerImpl(QuestionRepository questionRepository, ListQuestionDaoToListQuestion listQuestionDaoToListQuestion) {
 
-    this.questionRepository = questionRepository;
-    this.listQuestionDaoToListQuestion = listQuestionEntityToTest;
-  }
+        this.questionRepository = questionRepository;
+        this.listQuestionDaoToListQuestion = listQuestionDaoToListQuestion;
 
-  @Override
-  public Test create(Subject subject, Evaluation evaluation, int percentageOfQuestions) {
-    Test test = new Test();
-    this.questionsDao = questionRepository.findByEvaluationAndSubject(evaluation, subject);
-    test = new Test(listQuestionDaoToListQuestion
-                    .convert(questionRepository
-                             .findByEvaluationAndSubject(evaluation, subject)));
-    return test;
-  }
+    }
+
+    @Override
+    public Test create(Subject subject, Evaluation evaluation, int percentageOfQuestions) {
+        Test test;
+        test = new Test(listQuestionDaoToListQuestion
+            .convert(questionRepository
+                .findByEvaluationAndSubject(evaluation, subject)));
+        test.configTest(percentageOfQuestions);
+        return test;
+    }
 
 }

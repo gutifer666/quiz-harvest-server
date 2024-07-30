@@ -11,15 +11,14 @@ import trade.javiergutierrez.quizharvestserver.model.Test;
 @RestController
 public class QuizTestController {
 
-  private CreateTestController testController;
+    private CreateTestController testController;
 
-  public QuizTestController(CreateTestController testService) {
-    this.testController = testService;
-  }
+    public QuizTestController(CreateTestController testService) {
+        this.testController = testService;
+    }
 
-  @GetMapping("/create-test/{subject}/{evaluation}/{questions}")
-  public ResponseEntity<Test> create(@PathVariable Subject subject, @PathVariable Evaluation evaluation, @PathVariable int questions) {
-    // Adaptador que convierte las @PathVariable en tipos de datos que el servicio pueda entender y ejercitar el puerto
-    return ResponseEntity.ok(testController.create(subject, evaluation, questions));
-  }
+    @GetMapping("/create-test/{subject}/{evaluation}/{questions}")
+    public ResponseEntity<Test> create(@PathVariable Subject subject, @PathVariable Evaluation evaluation, @PathVariable int questions) {
+        return ResponseEntity.ok(testController.create(subject, evaluation, questions));
+    }
 }
