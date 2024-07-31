@@ -1,4 +1,4 @@
-package trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure;
+package trade.javiergutierrez.quizharvestserver.apps.API;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +12,10 @@ import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Test;
 @RestController
 public class QuizTestController {
 
-    private CreateTestController testController;
+    private final CreateTestController testController;
 
-    public QuizTestController(CreateTestController testService) {
-        this.testController = testService;
+    public QuizTestController(CreateTestController testController) {
+        this.testController = testController;
     }
 
     @GetMapping("/create-test/{subject}/{evaluation}/{questions}")
