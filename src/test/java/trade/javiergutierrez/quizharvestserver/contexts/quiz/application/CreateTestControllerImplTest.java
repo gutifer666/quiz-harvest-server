@@ -1,15 +1,16 @@
-package trade.javiergutierrez.quizharvestserver.application;
+package trade.javiergutierrez.quizharvestserver.contexts.quiz.application;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import trade.javiergutierrez.quizharvestserver.domain.Evaluation;
-import trade.javiergutierrez.quizharvestserver.domain.Question;
-import trade.javiergutierrez.quizharvestserver.domain.Subject;
-import trade.javiergutierrez.quizharvestserver.domain.dao.QuestionDao;
-import trade.javiergutierrez.quizharvestserver.domain.dao.QuestionRepository;
-import trade.javiergutierrez.quizharvestserver.utils.ListQuestionDaoToListQuestion;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.application.CreateTestControllerImpl;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Question;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.QuestionDao;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.QuestionRepository;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.utils.ListQuestionDaoToListQuestion;
 
 import java.util.List;
 
@@ -53,7 +54,7 @@ class CreateTestControllerImplTest {
         when(listQuestionDaoToListQuestion.convert(questionDaoList)).thenReturn(questionList);
 
         // When a test is created
-        trade.javiergutierrez.quizharvestserver.domain.Test result = createTestControllerImpl.create(subject, evaluation, percentageOfQuestions);
+        trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Test result = createTestControllerImpl.create(subject, evaluation, percentageOfQuestions);
 
         // Then the test contains all questions
         assertEquals(questionList, result.getQuestions());
@@ -81,7 +82,7 @@ class CreateTestControllerImplTest {
         when(listQuestionDaoToListQuestion.convert(questionDaoList)).thenReturn(questionList);
 
         // When a test is created
-        trade.javiergutierrez.quizharvestserver.domain.Test result = createTestControllerImpl.create(subject, evaluation, percentageOfQuestions);
+        trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Test result = createTestControllerImpl.create(subject, evaluation, percentageOfQuestions);
 
         // Then the test contains one question
         assertEquals(1, result.getQuestions().size());

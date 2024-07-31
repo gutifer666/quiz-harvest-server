@@ -1,10 +1,10 @@
-package trade.javiergutierrez.quizharvestserver.utils;
+package trade.javiergutierrez.quizharvestserver.contexts.quiz.utils;
 
 import org.springframework.stereotype.Component;
-import trade.javiergutierrez.quizharvestserver.domain.Option;
-import trade.javiergutierrez.quizharvestserver.domain.Question;
-import trade.javiergutierrez.quizharvestserver.domain.dao.OptionDao;
-import trade.javiergutierrez.quizharvestserver.domain.dao.QuestionDao;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Question;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Option;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.OptionDao;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.QuestionDao;
 
 import java.util.ArrayList;
 import java.util.List;

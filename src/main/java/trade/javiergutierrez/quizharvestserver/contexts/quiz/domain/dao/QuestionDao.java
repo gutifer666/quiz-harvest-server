@@ -1,11 +1,11 @@
-package trade.javiergutierrez.quizharvestserver.domain.dao;
+package trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import trade.javiergutierrez.quizharvestserver.domain.Evaluation;
-import trade.javiergutierrez.quizharvestserver.domain.Subject;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
 
 import java.util.List;
 

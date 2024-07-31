@@ -1,9 +1,11 @@
-package trade.javiergutierrez.quizharvestserver.application;
+package trade.javiergutierrez.quizharvestserver.contexts.quiz.application;
 
 import org.springframework.stereotype.Controller;
-import trade.javiergutierrez.quizharvestserver.domain.*;
-import trade.javiergutierrez.quizharvestserver.domain.dao.QuestionRepository;
-import trade.javiergutierrez.quizharvestserver.utils.ListQuestionDaoToListQuestion;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Test;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.utils.ListQuestionDaoToListQuestion;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.QuestionRepository;
 
 @Controller
 public class CreateTestControllerImpl implements CreateTestController {

@@ -1,8 +1,8 @@
-package trade.javiergutierrez.quizharvestserver.utils;
+package trade.javiergutierrez.quizharvestserver.contexts.quiz.utils;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-import trade.javiergutierrez.quizharvestserver.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
 
 @Component
 public class StringToEvaluationConverter implements Converter<String, Evaluation>{
