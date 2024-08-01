@@ -1,4 +1,4 @@
-package trade.javiergutierrez.quizharvestserver.contexts.quiz.utils;
+package trade.javiergutierrez.quizharvestserver.contexts._shared.infrastructure;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

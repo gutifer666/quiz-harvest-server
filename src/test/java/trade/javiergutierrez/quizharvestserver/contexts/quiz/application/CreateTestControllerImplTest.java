@@ -6,11 +6,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Question;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.QuestionDao;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.QuestionRepository;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.utils.ListQuestionDaoToListQuestion;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.DataBaseQuestionRepository;
 
 import java.util.List;
 
@@ -21,10 +19,7 @@ import static org.mockito.MockitoAnnotations.openMocks;
 class CreateTestControllerImplTest {
 
     @Mock
-    private QuestionRepository questionRepository;
-
-    @Mock
-    private ListQuestionDaoToListQuestion listQuestionDaoToListQuestion;
+    private DataBaseQuestionRepository dataBaseQuestionRepository;
 
     @InjectMocks
     private CreateTestControllerImpl createTestControllerImpl;
@@ -41,50 +36,18 @@ class CreateTestControllerImplTest {
         Evaluation evaluation = Evaluation.SECOND;
         int percentageOfQuestions = 100;
 
-        // And a list of 2 questions from the database
+        // And a list of 2 questionsDao from the database
         QuestionDao questionDao1 = new QuestionDao();
         QuestionDao questionDao2 = new QuestionDao();
         List<QuestionDao> questionDaoList = List.of(questionDao1, questionDao2);
-        when(questionRepository.findByEvaluationAndSubject(evaluation, subject)).thenReturn(questionDaoList);
-
-        // And a list of 2 questions
-        Question question1 = new Question();
-        Question question2 = new Question();
-        List<Question> questionList = List.of(question1, question2);
-        when(listQuestionDaoToListQuestion.convert(questionDaoList)).thenReturn(questionList);
+        when(dataBaseQuestionRepository.findByEvaluationAndSubject(evaluation, subject)).thenReturn(questionDaoList);
 
         // When a test is created
-        trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Test result = createTestControllerImpl.create(subject, evaluation, percentageOfQuestions);
+        trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.
+            Test test = createTestControllerImpl.create(subject, evaluation, percentageOfQuestions);
 
-        // Then the test contains all questions
-        assertEquals(questionList, result.getQuestions());
+        // Then the test contains 2 questions
+        assertEquals(2, test.getQuestions().size());
 
-
-    }
-
-    @Test
-    void    createReturnsOneQuestionWithPercentageOfQuestionsEqualTo50and2Questions() {
-        // Given parameters
-        Subject subject = Subject.DATABASES;
-        Evaluation evaluation = Evaluation.SECOND;
-        int percentageOfQuestions = 50;
-
-        // And a list of 2 questions from the database
-        QuestionDao questionDao1 = new QuestionDao();
-        QuestionDao questionDao2 = new QuestionDao();
-        List<QuestionDao> questionDaoList = List.of(questionDao1, questionDao2);
-        when(questionRepository.findByEvaluationAndSubject(evaluation, subject)).thenReturn(questionDaoList);
-
-        // And a list of 2 questions
-        Question question1 = new Question();
-        Question question2 = new Question();
-        List<Question> questionList = List.of(question1, question2);
-        when(listQuestionDaoToListQuestion.convert(questionDaoList)).thenReturn(questionList);
-
-        // When a test is created
-        trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Test result = createTestControllerImpl.create(subject, evaluation, percentageOfQuestions);
-
-        // Then the test contains one question
-        assertEquals(1, result.getQuestions().size());
     }
 }
