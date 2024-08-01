@@ -12,19 +12,22 @@ import java.util.List;
 @Component
 public class ListQuestionDaoToListQuestion {
 
-  public List<Question> convert(List<QuestionDao> questionDaos) {
-    List<Question> questions;
-    questions = questionDaos.stream().map(questionDao -> {
-      return new Question(questionDao.getId(), questionDao.getTextQuestion(), convertToOptionList(questionDao.getOptions()), questionDao.getSubject(), questionDao.getEvaluation());
-    }).toList();
-    return questions;
-  }
-
-  private List<Option> convertToOptionList(List<OptionDao> optionEntityList) {
-    List<Option> options = new ArrayList<>();
-    for (OptionDao optionEntity : optionEntityList) {
-      options.add(new Option(optionEntity.getId(), optionEntity.getTextOption(), optionEntity.isCorrect()));
+    public List<Question> convert(List<QuestionDao> questionDaos) {
+        List<Question> questions;
+        questions = questionDaos.stream().map(questionDao -> {
+            return new Question(questionDao.getId(), questionDao.getTextQuestion(), convertToOptionList(questionDao.getOptions()), questionDao.getSubject(), questionDao.getEvaluation());
+        }).toList();
+        return questions;
     }
-    return options;
-  }
+
+    private List<Option> convertToOptionList(List<OptionDao> optionEntityList) {
+        if (optionEntityList == null) {
+            return new ArrayList<>();
+        }
+        List<Option> options = new ArrayList<>();
+        for (OptionDao optionEntity : optionEntityList) {
+            options.add(new Option(optionEntity.getId(), optionEntity.getTextOption(), optionEntity.isCorrect()));
+        }
+        return options;
+    }
 }

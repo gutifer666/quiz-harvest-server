@@ -1,12 +1,15 @@
 package trade.javiergutierrez.quizharvestserver.contexts.quiz.application;
 
 import org.springframework.stereotype.Controller;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Test;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.*;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.OptionDao;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.QuestionDao;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.MemoryQuestionRepository;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.utils.ListQuestionDaoToListQuestion;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.QuestionRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class CreateTestControllerImpl implements CreateTestController {
@@ -32,5 +35,22 @@ public class CreateTestControllerImpl implements CreateTestController {
         test.configTest(percentageOfQuestions);
         return test;
     }
+    public List<Question> toQuestion(List<QuestionDao> questionDaos) {
+        List<Question> questions;
+        questions = questionDaos.stream().map(questionDao -> {
+            return new Question(questionDao.getId(), questionDao.getTextQuestion(), toOptionList(questionDao.getOptions()), questionDao.getSubject(), questionDao.getEvaluation());
+        }).toList();
+        return questions;
+    }
 
+    private List<Option> toOptionList(List<OptionDao> optionEntityList) {
+        if (optionEntityList == null) {
+            return new ArrayList<>();
+        }
+        List<Option> options = new ArrayList<>();
+        for (OptionDao optionEntity : optionEntityList) {
+            options.add(new Option(optionEntity.getId(), optionEntity.getTextOption(), optionEntity.isCorrect()));
+        }
+        return options;
+    }
 }
