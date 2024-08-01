@@ -14,12 +14,10 @@ import java.util.List;
 public class CreateTestControllerImpl implements CreateTestController {
 
     private final DataBaseQuestionRepository dataBaseQuestionRepository;
-    private final MemoryDataBaseQuestionRepositoryImpl memoryQuestionRepository;
 
-    public CreateTestControllerImpl(DataBaseQuestionRepository dataBaseQuestionRepository, MemoryDataBaseQuestionRepositoryImpl memoryQuestionRepository) {
+    public CreateTestControllerImpl(DataBaseQuestionRepository dataBaseQuestionRepository) {
 
         this.dataBaseQuestionRepository = dataBaseQuestionRepository;
-        this.memoryQuestionRepository = memoryQuestionRepository;
     }
 
     @Override
