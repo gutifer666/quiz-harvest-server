@@ -4,24 +4,22 @@ import org.springframework.stereotype.Controller;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.*;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.OptionDao;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.QuestionDao;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.MemoryDataBaseQuestionRepositoryImpl;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.DataBaseQuestionRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class CreateTestControllerImpl implements CreateTestController {
+public class TestGetter {
 
     private final DataBaseQuestionRepository dataBaseQuestionRepository;
 
-    public CreateTestControllerImpl(DataBaseQuestionRepository dataBaseQuestionRepository) {
+    public TestGetter(DataBaseQuestionRepository dataBaseQuestionRepository) {
 
         this.dataBaseQuestionRepository = dataBaseQuestionRepository;
     }
 
-    @Override
-    public Test create(Subject subject, Evaluation evaluation, int percentageOfQuestions) {
+    public Test get(Subject subject, Evaluation evaluation, int percentageOfQuestions) {
         Test test;
         test = new Test(this.toQuestion(dataBaseQuestionRepository
                 .findByEvaluationAndSubject(evaluation, subject)));

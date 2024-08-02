@@ -16,13 +16,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
 
-class CreateTestControllerImplTest {
+class TestGetterTest {
 
     @Mock
     private DataBaseQuestionRepository dataBaseQuestionRepository;
 
     @InjectMocks
-    private CreateTestControllerImpl createTestControllerImpl;
+    private TestGetter testGetter;
 
     @BeforeEach
     void setUp() {
@@ -44,7 +44,7 @@ class CreateTestControllerImplTest {
 
         // When a test is created
         trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.
-            Test test = createTestControllerImpl.create(subject, evaluation, percentageOfQuestions);
+            Test test = testGetter.get(subject, evaluation, percentageOfQuestions);
 
         // Then the test contains 2 questions
         assertEquals(2, test.getQuestions().size());
