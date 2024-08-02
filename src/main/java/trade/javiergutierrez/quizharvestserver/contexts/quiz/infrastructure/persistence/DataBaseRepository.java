@@ -7,7 +7,7 @@ import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.Question
 
 import java.util.List;
 
-public interface DataBaseQuestionRepository extends JpaRepository<QuestionDao, Long> {
+public interface DataBaseRepository extends JpaRepository<QuestionDao, Long> {
 
   List<QuestionDao> findByEvaluationAndSubject(Evaluation evaluation, Subject subject);
 }

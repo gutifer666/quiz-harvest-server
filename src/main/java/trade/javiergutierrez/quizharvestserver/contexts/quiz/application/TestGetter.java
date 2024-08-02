@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.*;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.OptionDao;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.QuestionDao;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.DataBaseQuestionRepository;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.DataBaseRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +12,16 @@ import java.util.List;
 @Controller
 public class TestGetter {
 
-    private final DataBaseQuestionRepository dataBaseQuestionRepository;
+    private final DataBaseRepository dataBaseRepository;
 
-    public TestGetter(DataBaseQuestionRepository dataBaseQuestionRepository) {
 
-        this.dataBaseQuestionRepository = dataBaseQuestionRepository;
+    public TestGetter(DataBaseRepository dataBaseRepository) {
+        this.dataBaseRepository = dataBaseRepository;
     }
 
     public Test get(Subject subject, Evaluation evaluation, int percentageOfQuestions) {
         Test test;
-        test = new Test(this.toQuestion(dataBaseQuestionRepository
+        test = new Test(this.toQuestion(dataBaseRepository
                 .findByEvaluationAndSubject(evaluation, subject)));
         test.configTest(percentageOfQuestions);
         return test;
