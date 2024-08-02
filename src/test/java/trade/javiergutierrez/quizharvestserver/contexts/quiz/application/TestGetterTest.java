@@ -6,9 +6,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Question;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.QuestionDao;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.DataBaseRepository;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.QuizRepositoryMySql;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ import static org.mockito.MockitoAnnotations.openMocks;
 class TestGetterTest {
 
     @Mock
-    private DataBaseRepository dataBaseRepository;
+    private QuizRepositoryMySql quizRepositoryMySql;
 
     @InjectMocks
     private TestGetter testGetter;
@@ -40,7 +41,7 @@ class TestGetterTest {
         QuestionDao questionDao1 = new QuestionDao();
         QuestionDao questionDao2 = new QuestionDao();
         List<QuestionDao> questionDaoList = List.of(questionDao1, questionDao2);
-        when(dataBaseRepository.findByEvaluationAndSubject(evaluation, subject)).thenReturn(questionDaoList);
+        when(quizRepositoryMySql.findByEvaluationAndSubject(evaluation, subject)).thenReturn(questionDaoList);
 
         // When a test is created
         trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.
