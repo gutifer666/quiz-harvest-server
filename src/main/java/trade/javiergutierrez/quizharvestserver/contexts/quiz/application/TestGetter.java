@@ -2,8 +2,8 @@ package trade.javiergutierrez.quizharvestserver.contexts.quiz.application;
 
 import org.springframework.stereotype.Controller;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.*;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.OptionDao;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.QuestionDao;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.dao.OptionDao;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.dao.QuestionDao;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.QuizRepositoryMySql;
 
 import java.util.ArrayList;

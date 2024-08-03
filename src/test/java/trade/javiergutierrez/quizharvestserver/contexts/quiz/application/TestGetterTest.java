@@ -7,9 +7,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Question;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.dao.QuestionDao;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.dao.QuestionDao;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.QuizRepositoryMySql;
 
 import java.util.List;
