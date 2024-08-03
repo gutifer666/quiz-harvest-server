@@ -1,4 +1,4 @@
-package trade.javiergutierrez.quizharvestserver.apps.API;
+package trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.communication;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
