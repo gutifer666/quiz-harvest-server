@@ -1,5 +1,6 @@
 package trade.javiergutierrez.quizharvestserver.contexts.quiz.application;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -24,10 +25,16 @@ class TestGetterTest {
 
     @InjectMocks
     private TestGetter testGetter;
+    private AutoCloseable closeable;
 
     @BeforeEach
     void setUp() {
-        openMocks(this);
+        closeable = openMocks(this);
+    }
+
+    @AfterEach
+    void tearDown() throws Exception {
+        closeable.close();
     }
 
     @Test
