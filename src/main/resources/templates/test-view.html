@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Test view</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>Test view</h1>
+<h2>Datos generales</h2>
+<p th:text="|Módulo: ${test.getSubject()}|"></p>
+<p th:text="|Evaluación: ${test.getEvaluation()}|"></p>
+<p th:text="|Porcentaje de preguntas: ${test.getPercentageOfQuestions()}|"></p>
+<p th:text="|Número de preguntas: ${test.getTestQuestions()}|"></p>
+
+<h2>Preguntas</h2>
+<div th:each="question : ${test.questions}">
+    <p th:text="|Pregunta: ${question.textQuestion}|"></p>
+    <ul>
+        <li th:each="option : ${question.options}" th:text="${option.textOption}"></li>
+    </ul>
+</div>
+</body>
+</html>

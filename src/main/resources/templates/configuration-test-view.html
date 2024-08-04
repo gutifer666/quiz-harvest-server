@@ -1,11 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Configuration test view</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="configuration-test.css">
 </head>
 <body>
 <h1>Configuration test view</h1>
-<p th:text="|Formulario|" />
+<form action="#"
+      th:action="@{/web/test}"
+      method="get">
+
+    <label for="subject">Módulo:</label>
+    <select id="subject" name="subject">
+        <option value="databases">Bases de Datos</option>
+        <option value="programming">Programación</option>
+        <option value="environments">Entornos</option>
+    </select>
+
+    <label for="evaluation">Evaluación:</label>
+    <select id="evaluation" name="evaluation">
+        <option value="first">Primera</option>
+        <option value="second">Segunda</option>
+    </select>
+
+    <label for="percentageOfQuestions">Percentage of Questions:</label>
+    <input type="number" id="percentageOfQuestions" name="percentageOfQuestions" min="1" max="100">
+
+    <button type="submit">Empezar Test</button>
+</form>
 </body>
 </html>
