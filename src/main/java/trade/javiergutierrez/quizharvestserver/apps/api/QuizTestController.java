@@ -1,4 +1,4 @@
-package trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.communication;
+package trade.javiergutierrez.quizharvestserver.apps.api;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +18,8 @@ public class QuizTestController {
         this.testGetter = testGetter;
     }
 
-    @GetMapping("/create-test/{subject}/{evaluation}/{questions}")
-    public ResponseEntity<Test> get(@PathVariable Subject subject, @PathVariable Evaluation evaluation, @PathVariable int questions) {
+    @GetMapping("/test/{subject}/{evaluation}/{questions}")
+    public ResponseEntity<Test> run(@PathVariable Subject subject, @PathVariable Evaluation evaluation, @PathVariable int questions) {
         return ResponseEntity.ok(testGetter.get(subject, evaluation, questions));
     }
 }
