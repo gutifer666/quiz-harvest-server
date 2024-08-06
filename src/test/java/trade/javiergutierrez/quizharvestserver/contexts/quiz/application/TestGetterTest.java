@@ -7,9 +7,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Question;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.dao.QuestionDao;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.QuizRepositoryMySql;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.MySQLQuestionRepository;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ import static org.mockito.MockitoAnnotations.openMocks;
 class TestGetterTest {
 
     @Mock
-    private QuizRepositoryMySql quizRepositoryMySql;
+    private MySQLQuestionRepository mySQLQuestionRepository;
 
     @InjectMocks
     private TestGetter testGetter;
@@ -44,10 +44,10 @@ class TestGetterTest {
         int percentageOfQuestions = 100;
 
         // And a list of 2 questionsDao from the database
-        QuestionDao questionDao1 = new QuestionDao();
-        QuestionDao questionDao2 = new QuestionDao();
-        List<QuestionDao> questionDaoList = List.of(questionDao1, questionDao2);
-        when(quizRepositoryMySql.findByEvaluationAndSubject(evaluation, subject)).thenReturn(questionDaoList);
+        Question question1 = new Question();
+        Question question2 = new Question();
+        List<Question> questionList = List.of(question1, question2);
+        when(mySQLQuestionRepository.bySubjectAndEvaluation(subject, evaluation)).thenReturn(questionList);
 
         // When a test is created
         trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.
