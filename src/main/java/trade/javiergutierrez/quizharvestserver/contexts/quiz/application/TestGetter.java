@@ -16,7 +16,7 @@ public class TestGetter {
     }
 
     public Test get(Subject subject, Evaluation evaluation, int percentageOfQuestions) {
-        List<Question> questions = questionRepository.findQuestions(subject, evaluation);
+        List<Question> questions = questionRepository.bySubjectAndEvaluation(subject, evaluation);
         Test test = new Test(questions);
         test.configTest(percentageOfQuestions);
         return test;

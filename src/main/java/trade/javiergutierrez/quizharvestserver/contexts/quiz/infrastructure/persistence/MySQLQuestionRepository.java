@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public class MySQLQuestionRepository implements QuestionRepository {
     @Override
-    public List<Question> findQuestions(Subject subject, Evaluation evaluation) {
+    public List<Question> bySubjectAndEvaluation(Subject subject, Evaluation evaluation) {
         return null;
     }
 }
