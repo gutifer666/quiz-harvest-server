@@ -1,3 +1,4 @@
+use quiz_harvest;
 -- Insert questions for each subject
 INSERT INTO question (text_question, evaluation, subject) VALUES
 ('Question 1 for BUSINESS', 'FIRST', 'BUSINESS'),
