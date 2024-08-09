@@ -9,14 +9,14 @@ import java.util.List;
 @Controller
 public class TestGetter {
 
-    private final MySQLQuestionRepository mySQLQuestionRepository;
+    private final QuestionRepository questionRepository;
 
     public TestGetter(MySQLQuestionRepository mySQLQuestionRepository) {
-        this.mySQLQuestionRepository = mySQLQuestionRepository;
+        this.questionRepository = mySQLQuestionRepository;
     }
 
     public Test get(Subject subject, Evaluation evaluation, int percentageOfQuestions) {
-        List<Question> questions = mySQLQuestionRepository.bySubjectAndEvaluation(subject, evaluation);
+        List<Question> questions = questionRepository.bySubjectAndEvaluation(subject, evaluation);
         Test test = new Test(questions);
         test.configTest(percentageOfQuestions);
         return test;
