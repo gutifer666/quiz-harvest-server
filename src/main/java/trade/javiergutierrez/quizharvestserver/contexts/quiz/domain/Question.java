@@ -10,6 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Question {
+
   private Long id;
   private String textQuestion;
   private List<Option> options;
