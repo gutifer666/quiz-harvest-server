@@ -38,34 +38,12 @@ class TestGetterTest {
     }
 
     @Test
-    void    createReturnsAllQuestionsWithPercentageOfQuestionsEqualTo100and2Questions() {
-        // Given parameters
-        Subject subject = Subject.DATABASES;
-        Evaluation evaluation = Evaluation.SECOND;
-        int percentageOfQuestions = 100;
-
-        // And a list of 2 questionsDao from the database
-        Question question1 = new Question();
-        Question question2 = new Question();
-        List<Question> questionList = List.of(question1, question2);
-        when(mySQLQuestionRepository.bySubjectAndEvaluation(subject, evaluation)).thenReturn(questionList);
-
-        // When a test is created
-        trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.
-            Test test = testGetter.get(subject, evaluation, percentageOfQuestions);
-
-        // Then the test contains 2 questions
-        assertEquals(2, test.getQuestions().size());
-
-    }
-    @Test
     void    getReturnsAllQuestionsWithPercentageOfQuestionsEqualTo100and2QuestionsWith4optionsForQuestion(){
-        // Given parameters
+        // Given
         Subject subject = Subject.DATABASES;
         Evaluation evaluation = Evaluation.SECOND;
         int percentageOfQuestions = 100;
 
-        // And a list of 2 questionsDao from the database
         Question question1 = new Question();
         question1.setId(1L);
         question1.setTextQuestion("Question 1");
