@@ -84,4 +84,26 @@ class TestGetterTest {
         // And the second question contains 4 options
         assertEquals(4, test.getQuestions().get(1).getOptions().size());
     }
+    @Test
+    void    getReturnsAssertionErrorWhenPercentageOfQuestionsIsLessThan1(){
+        // Given
+        Subject subject = Subject.DATABASES;
+        Evaluation evaluation = Evaluation.SECOND;
+        int percentageOfQuestions = 0;
+
+        // When a test is created
+        // Then an assertion error is thrown
+        assertThrows(AssertionError.class, () -> testGetter.get(subject, evaluation, percentageOfQuestions));
+    }
+    @Test
+    void    getReturnsAssertionErrorWhenPercentageOfQuestionsIsGreaterThan100(){
+        // Given
+        Subject subject = Subject.DATABASES;
+        Evaluation evaluation = Evaluation.SECOND;
+        int percentageOfQuestions = 101;
+
+        // When a test is created
+        // Then an assertion error is thrown
+        assertThrows(AssertionError.class, () -> testGetter.get(subject, evaluation, percentageOfQuestions));
+    }
 }

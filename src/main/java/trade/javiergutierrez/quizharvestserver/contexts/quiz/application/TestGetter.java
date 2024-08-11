@@ -16,6 +16,7 @@ public class TestGetter {
     }
 
     public Test get(Subject subject, Evaluation evaluation, int percentageOfQuestions) {
+        assert percentageOfQuestions > 0 && percentageOfQuestions <= 100 : "Percentage of questions must be between 1 and 100";
         List<Question> questions = questionRepository.bySubjectAndEvaluation(subject, evaluation);
         Test test = new Test(questions);
         test.configTest(percentageOfQuestions);

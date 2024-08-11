@@ -23,7 +23,6 @@ public class Test {
     }
 
     public void configTest(int percentageOfQuestions) {
-        assert percentageOfQuestions > 0 && percentageOfQuestions <= 100;
         this.percentageOfQuestions = percentageOfQuestions;
         this.testQuestions = (int) Math.ceil(questions.size() * (percentageOfQuestions / 100.0));
         this.questions = questions.subList(0, testQuestions);
