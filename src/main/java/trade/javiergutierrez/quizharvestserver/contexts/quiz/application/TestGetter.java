@@ -15,11 +15,13 @@ public class TestGetter {
         this.questionRepository = mySQLQuestionRepository;
     }
 
+    private List<Question> getQuestionRepository(Subject subject, Evaluation evaluation) {
+        return questionRepository.bySubjectAndEvaluation(subject, evaluation);
+    }
+
     public Test get(Subject subject, Evaluation evaluation, int percentageOfQuestions) {
         assert percentageOfQuestions > 0 && percentageOfQuestions <= 100 : "Percentage of questions must be between 1 and 100";
-        List<Question> questions = questionRepository.bySubjectAndEvaluation(subject, evaluation);
-        //test.configTest(percentageOfQuestions);
-        return new Test(questions, percentageOfQuestions);
+        return new Test(this.getQuestionRepository(subject, evaluation), percentageOfQuestions);
     }
 
 }
