@@ -22,7 +22,17 @@ public class Test {
         this.testQuestions = questions.size();
     }
 
+    public Test(List<Question> questions, int percentageOfQuestions) {
+        assert percentageOfQuestions > 0 && percentageOfQuestions <= 100 : "Percentage of questions must be between 1 and 100";
+        this.questions = questions;
+        this.subject = questions.get(0).getSubject();
+        this.evaluation = questions.get(0).getEvaluation();
+        this.percentageOfQuestions = percentageOfQuestions;
+        this.testQuestions = (int) Math.ceil(questions.size() * (percentageOfQuestions / 100.0));
+    }
+
     public void configTest(int percentageOfQuestions) {
+        assert percentageOfQuestions > 0 && percentageOfQuestions <= 100 : "Percentage of questions must be between 1 and 100";
         this.percentageOfQuestions = percentageOfQuestions;
         this.testQuestions = (int) Math.ceil(questions.size() * (percentageOfQuestions / 100.0));
         this.questions = questions.subList(0, testQuestions);
