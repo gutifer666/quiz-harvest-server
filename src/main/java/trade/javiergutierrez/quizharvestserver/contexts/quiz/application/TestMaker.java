@@ -7,11 +7,11 @@ import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.pers
 import java.util.List;
 
 @Controller
-public class TestGetter {
+public class TestMaker {
 
     private final QuestionRepository questionRepository;
 
-    public TestGetter(MySQLQuestionRepository mySQLQuestionRepository) {
+    public TestMaker(MySQLQuestionRepository mySQLQuestionRepository) {
         this.questionRepository = mySQLQuestionRepository;
     }
 

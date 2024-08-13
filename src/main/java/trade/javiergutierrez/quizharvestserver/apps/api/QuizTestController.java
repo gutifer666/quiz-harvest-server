@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.application.TestGetter;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.application.TestMaker;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Test;
@@ -12,14 +12,14 @@ import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Test;
 @RestController
 public class QuizTestController {
 
-    private final TestGetter testGetter;
+    private final TestMaker testMaker;
 
-    public QuizTestController(TestGetter testGetter) {
-        this.testGetter = testGetter;
+    public QuizTestController(TestMaker testMaker) {
+        this.testMaker = testMaker;
     }
 
     @GetMapping("/test/{subject}/{evaluation}/{questions}")
     public ResponseEntity<Test> run(@PathVariable Subject subject, @PathVariable Evaluation evaluation, @PathVariable int questions) {
-        return ResponseEntity.ok(testGetter.get(subject, evaluation, questions));
+        return ResponseEntity.ok(testMaker.get(subject, evaluation, questions));
     }
 }

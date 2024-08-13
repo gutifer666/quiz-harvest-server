@@ -24,7 +24,7 @@ class TestGetterTest {
     private MySQLQuestionRepository mySQLQuestionRepository;
 
     @InjectMocks
-    private TestGetter testGetter;
+    private TestMaker testMaker;
     private AutoCloseable closeable;
 
     @BeforeEach
@@ -73,7 +73,7 @@ class TestGetterTest {
 
         // When a test is created
         trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.
-            Test test = testGetter.get(subject, evaluation, percentageOfQuestions);
+            Test test = testMaker.get(subject, evaluation, percentageOfQuestions);
 
         // Then the test contains 2 questions
         assertEquals(2, test.getQuestions().size());
@@ -93,7 +93,7 @@ class TestGetterTest {
 
         // When a test is created
         // Then an assertion error is thrown
-        assertThrows(AssertionError.class, () -> testGetter.get(subject, evaluation, percentageOfQuestions));
+        assertThrows(AssertionError.class, () -> testMaker.get(subject, evaluation, percentageOfQuestions));
     }
     @Test
     void    getReturnsAssertionErrorWhenPercentageOfQuestionsIsGreaterThan100(){
@@ -104,6 +104,6 @@ class TestGetterTest {
 
         // When a test is created
         // Then an assertion error is thrown
-        assertThrows(AssertionError.class, () -> testGetter.get(subject, evaluation, percentageOfQuestions));
+        assertThrows(AssertionError.class, () -> testMaker.get(subject, evaluation, percentageOfQuestions));
     }
 }

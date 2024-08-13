@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.application.TestGetter;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.application.TestMaker;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Test;
@@ -12,10 +12,10 @@ import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Test;
 @Controller
 public class QuizTestWebController {
 
-    private final TestGetter testGetter;
+    private final TestMaker testMaker;
 
-    public QuizTestWebController(TestGetter testGetter) {
-        this.testGetter = testGetter;
+    public QuizTestWebController(TestMaker testMaker) {
+        this.testMaker = testMaker;
     }
 
     @GetMapping("web/configure")
@@ -31,7 +31,7 @@ public class QuizTestWebController {
 
         Subject subjectEnum = Subject.valueOf(subject.toUpperCase());
         Evaluation evaluationEnum = Evaluation.valueOf(evaluation.toUpperCase());
-        Test test = testGetter.get(subjectEnum, evaluationEnum, questions);
+        Test test = testMaker.get(subjectEnum, evaluationEnum, questions);
         model.addAttribute("test", test);
 
         return "test-view";
