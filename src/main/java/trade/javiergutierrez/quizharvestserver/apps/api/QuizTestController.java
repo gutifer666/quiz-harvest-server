@@ -8,14 +8,15 @@ import trade.javiergutierrez.quizharvestserver.contexts.quiz.application.TestMak
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Test;
+import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.MySQLQuestionRepository;
 
 @RestController
 public class QuizTestController {
 
     private final TestMaker testMaker;
 
-    public QuizTestController(TestMaker testMaker) {
-        this.testMaker = testMaker;
+    public QuizTestController(MySQLQuestionRepository questionRepository) {
+        this.testMaker = new TestMaker(questionRepository);
     }
 
     @GetMapping("/test/{subject}/{evaluation}/{questions}")

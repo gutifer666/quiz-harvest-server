@@ -2,7 +2,6 @@ package trade.javiergutierrez.quizharvestserver.contexts.quiz.application;
 
 import org.springframework.stereotype.Controller;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.*;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.MySQLQuestionRepository;
 
 import java.util.List;
 
@@ -11,8 +10,8 @@ public class TestMaker {
 
     private final QuestionRepository questionRepository;
 
-    public TestMaker(MySQLQuestionRepository mySQLQuestionRepository) {
-        this.questionRepository = mySQLQuestionRepository;
+    public TestMaker(QuestionRepository questionRepository) {
+        this.questionRepository = questionRepository;
     }
 
     private List<Question> getQuestionRepository(Subject subject, Evaluation evaluation) {
