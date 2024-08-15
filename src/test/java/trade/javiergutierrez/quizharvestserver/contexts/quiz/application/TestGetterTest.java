@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Question;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.MySQLQuestionRepository;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Option;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Question;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Subject;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.infrastructure.persistence.MySQLQuestionRepository;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Option;
 
 import java.util.List;
 

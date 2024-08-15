@@ -1,9 +1,16 @@
 @startuml
 left to right direction
 
-actor Client
+actor Student
+actor admin
 
-Client --> (createTest)
-Client --> (checkTest)
+Student --> (createTest)
+Student --> (checkTest)
+
+admin --> (createQuestion)
+admin --> (readQuestionsBySubjectAndEvaluation)
+admin --> (updateQuestion)
+admin --> (deleteQuestion)
+admin --> (createQuestionsFromDaypo)
 
 @enduml

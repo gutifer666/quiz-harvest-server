@@ -1,8 +1,8 @@
-package trade.javiergutierrez.quizharvestserver.contexts._shared.infrastructure;
+package trade.javiergutierrez.quizharvestserver.contexts._shared.infrastructure.http;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Subject;
 
 @Component
 public class StringToSubjectConverter implements Converter<String, Subject>{

@@ -1,4 +1,4 @@
-package trade.javiergutierrez.quizharvestserver.contexts.quiz.domain;
+package trade.javiergutierrez.quizharvestserver.contexts._shared.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

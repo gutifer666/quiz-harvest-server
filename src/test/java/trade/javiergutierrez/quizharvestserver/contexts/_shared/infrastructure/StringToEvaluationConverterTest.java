@@ -1,7 +1,8 @@
 package trade.javiergutierrez.quizharvestserver.contexts._shared.infrastructure;
 
 import org.junit.jupiter.api.Test;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.infrastructure.http.StringToEvaluationConverter;
 
 import static org.junit.jupiter.api.Assertions.*;
 

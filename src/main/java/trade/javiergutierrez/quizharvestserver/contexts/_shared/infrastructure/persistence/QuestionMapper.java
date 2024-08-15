@@ -1,17 +1,15 @@
-package trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence;
+package trade.javiergutierrez.quizharvestserver.contexts._shared.infrastructure.persistence;
 
 import org.springframework.jdbc.core.RowMapper;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Option;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Question;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Option;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Question;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Subject;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class QuestionMapper implements RowMapper<Question> {
     @Override

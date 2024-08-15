@@ -1,6 +1,10 @@
 package trade.javiergutierrez.quizharvestserver.contexts.quiz.application;
 
 import org.springframework.stereotype.Controller;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Question;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.QuestionRepository;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Subject;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.*;
 
 import java.util.List;

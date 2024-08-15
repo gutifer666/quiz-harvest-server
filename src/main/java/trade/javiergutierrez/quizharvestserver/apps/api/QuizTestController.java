@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.application.TestMaker;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Subject;
 import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Test;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence.MySQLQuestionRepository;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.infrastructure.persistence.MySQLQuestionRepository;
 
 @RestController
 public class QuizTestController {

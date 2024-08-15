@@ -1,11 +1,8 @@
-package trade.javiergutierrez.quizharvestserver.contexts.quiz.infrastructure.persistence;
+package trade.javiergutierrez.quizharvestserver.contexts._shared.infrastructure.persistence;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Evaluation;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Question;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.QuestionRepository;
-import trade.javiergutierrez.quizharvestserver.contexts.quiz.domain.Subject;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,4 +41,18 @@ public class MySQLQuestionRepository implements QuestionRepository {
         // Devolvemos solo las preguntas con las opciones correctamente asignadas
         return new ArrayList<>(questionMap.values());
     }
+
+@Override
+public void save(Question question) {
+    String questionSql = "INSERT INTO question (id, text_question, subject, evaluation) VALUES (?, ?, ?, ?) " +
+                         "ON DUPLICATE KEY UPDATE text_question = VALUES(text_question), subject = VALUES(subject), evaluation = VALUES(evaluation)";
+    template.update(questionSql, question.getId(), question.getTextQuestion(), question.getSubject().toString(), question.getEvaluation().toString());
+
+    String optionSql = "INSERT INTO option_entity (option_id, question_id, text_option, is_correct, is_selected) VALUES (?, ?, ?, ?, ?) " +
+                       "ON DUPLICATE KEY UPDATE text_option = VALUES(text_option), is_correct = VALUES(is_correct), is_selected = VALUES(is_selected)";
+    for (Option option : question.getOptions()) {
+        template.update(optionSql, option.getId(), question.getId(), option.getTextOption(), option.isCorrect(), option.isSelected());
+    }
+}
+
 }

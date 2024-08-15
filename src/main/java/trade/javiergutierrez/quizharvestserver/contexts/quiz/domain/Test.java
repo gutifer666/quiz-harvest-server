@@ -2,6 +2,9 @@ package trade.javiergutierrez.quizharvestserver.contexts.quiz.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Evaluation;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Question;
+import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Subject;
 
 import java.util.ArrayList;
 import java.util.Collections;
