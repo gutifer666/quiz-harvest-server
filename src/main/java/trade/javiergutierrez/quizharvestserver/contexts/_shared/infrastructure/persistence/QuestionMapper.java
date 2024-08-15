@@ -22,12 +22,15 @@ public class QuestionMapper implements RowMapper<Question> {
 
         // Solo se agrega una opción para la fila actual
         List<Option> options = new ArrayList<>();
-        Option option = new Option();
-        option.setId(rs.getLong("option_id"));
-        option.setTextOption(rs.getString("text_option"));
-        option.setCorrect(rs.getBoolean("is_correct"));
-        option.setSelected(rs.getBoolean("is_selected"));
-        options.add(option);
+        Long optionId = rs.getLong("option_id");
+        if (!rs.wasNull()) {
+            Option option = new Option();
+            option.setId(optionId);
+            option.setTextOption(rs.getString("text_option"));
+            option.setCorrect(rs.getBoolean("is_correct"));
+            option.setSelected(rs.getBoolean("is_selected"));
+            options.add(option);
+        }
 
         question.setOptions(options);
         return question;
