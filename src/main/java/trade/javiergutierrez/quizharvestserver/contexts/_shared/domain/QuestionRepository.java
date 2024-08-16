@@ -7,5 +7,8 @@ import java.util.List;
 @Repository
 public interface QuestionRepository {
     List<Question> bySubjectAndEvaluation(Subject subject, Evaluation evaluation);
+
     void save(Question question);
+
+    void delete(String id);
 }

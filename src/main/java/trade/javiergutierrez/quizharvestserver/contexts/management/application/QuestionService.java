@@ -19,6 +19,9 @@ public class QuestionService {
     public void createQuestion(Question question) {
         questionRepository.save(question);
     }
+    public void deleteQuestion(String id) {
+        questionRepository.delete(id);
+    }
 
     public List<Question> readQuestionsBySubjectAndEvaluation(String subject, String evaluation) {
         Subject subjectEnum = Subject.valueOf(subject.toUpperCase());

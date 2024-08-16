@@ -28,4 +28,10 @@ public class QuestionController {
         List<Question> questions = questionService.readQuestionsBySubjectAndEvaluation(subject, evaluation);
         return ResponseEntity.ok(questions);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteQuestion(@PathVariable String id) {
+        questionService.deleteQuestion(id);
+        return ResponseEntity.ok().build();
+    }
 }

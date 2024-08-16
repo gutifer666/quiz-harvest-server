@@ -42,8 +42,8 @@ public class MySQLQuestionRepository implements QuestionRepository {
         return new ArrayList<>(questionMap.values());
     }
 
-@Override
-public void save(Question question) {
+    @Override
+    public void save(Question question) {
     String questionSql = "INSERT INTO question (id, text_question, subject, evaluation) VALUES (?, ?, ?, ?) " +
                          "ON DUPLICATE KEY UPDATE text_question = VALUES(text_question), subject = VALUES(subject), evaluation = VALUES(evaluation)";
     template.update(questionSql, question.getId(), question.getTextQuestion(), question.getSubject().toString(), question.getEvaluation().toString());
@@ -55,4 +55,11 @@ public void save(Question question) {
     }
 }
 
+    @Override
+    public void delete(String id) {
+        String optionSql = "DELETE FROM option_entity WHERE question_id = ?";
+        template.update(optionSql, id);
+        String questionSql = "DELETE FROM question WHERE id = ?";
+        template.update(questionSql, id);
+    }
 }
