@@ -22,4 +22,14 @@ public class Question {
     public String getQuestion() {
         return this.question;
     }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public List<String> getSolutions() {
+        return this.solutions;
+    }
+
+
 }
