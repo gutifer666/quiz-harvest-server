@@ -24,7 +24,11 @@ public class TestMaker {
 
     public Test get(Subject subject, Evaluation evaluation, int percentageOfQuestions) {
         assert percentageOfQuestions > 0 && percentageOfQuestions <= 100 : "Percentage of questions must be between 1 and 100";
-        return new Test(this.getQuestionRepository(subject, evaluation), percentageOfQuestions);
+        List<Question> questionList = this.getQuestionRepository(subject, evaluation);
+        if (questionList.isEmpty()) {
+            throw new IllegalArgumentException("No questions found for the given criteria");
+        }
+        return new Test(questionList, percentageOfQuestions);
     }
 
 }

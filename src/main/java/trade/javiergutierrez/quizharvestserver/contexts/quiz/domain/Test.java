@@ -18,7 +18,9 @@ public class Test {
     private Evaluation evaluation;
 
     public Test(List<Question> questions, int percentageOfQuestions) {
-        assert !questions.isEmpty() : "Questions must not be empty";
+        if (questions == null || questions.isEmpty()) {
+            throw new IllegalArgumentException("Questions list cannot be null or empty");
+        }
         assert percentageOfQuestions > 0 && percentageOfQuestions <= 100 : "Percentage of questions must be between 1 and 100";
         this.subject = questions.get(0).getSubject();
         this.evaluation = questions.get(0).getEvaluation();
