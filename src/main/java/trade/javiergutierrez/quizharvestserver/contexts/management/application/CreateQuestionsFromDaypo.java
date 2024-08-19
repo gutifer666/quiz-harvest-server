@@ -7,6 +7,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import trade.javiergutierrez.quizharvestserver.contexts.management.domain.Question;
+import trade.javiergutierrez.quizharvestserver.contexts.management.domain.QuestionMapper;
 import trade.javiergutierrez.quizharvestserver.contexts.management.domain.SetOfQuestions;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -33,11 +34,31 @@ public class CreateQuestionsFromDaypo {
     public void execute(MultipartFile file) {
         Document document = formatXML(file);
         List<Question> questions = null;
+        List<trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Question> questionsMapped = new ArrayList<>();
 
         if (document != null) {
             questions = createQuestionsFromXML(document);
         }
+        for (Question question : questions) {
+            questionsMapped.add(QuestionMapper.map(question));
+        }
+        System.out.println("Questions not mapped");
         printConsole(questions);
+        System.out.println("Questions mapped");
+        printConsoleQuestionsMapped(questionsMapped);
+
+    }
+
+    private void printConsoleQuestionsMapped(List<trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Question> questionsMapped) {
+        if (questionsMapped != null) {
+            for (trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Question question : questionsMapped) {
+                System.out.println(question.getId());
+                System.out.println(question.getTextQuestion());
+                System.out.println(question.getOptions());
+                System.out.println(question.getSubject());
+                System.out.println(question.getEvaluation());
+            }
+        }
     }
 
     private void printConsole(List<Question> questions) {

@@ -21,7 +21,7 @@ public class QuestionMapper {
     private static List<Option> getOptions() {
        List<Option> options = new ArrayList<>();
        for (int i = 0; i < 4; i++) {
-           options.set(i, new Option(i+1,
+           options.add(i, new Option(i+1,
                                getOptionText(i),
                                 false));
        }
