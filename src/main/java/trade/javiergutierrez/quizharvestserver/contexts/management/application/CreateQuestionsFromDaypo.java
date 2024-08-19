@@ -54,7 +54,11 @@ public class CreateQuestionsFromDaypo {
             for (trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Question question : questionsMapped) {
                 System.out.println(question.getId());
                 System.out.println(question.getTextQuestion());
-                System.out.println(question.getOptions());
+                for (trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Option option : question.getOptions()) {
+                    System.out.println(option.getId());
+                    System.out.println(option.getTextOption());
+                    System.out.println(option.isCorrect());
+                }
                 System.out.println(question.getSubject());
                 System.out.println(question.getEvaluation());
             }
@@ -64,7 +68,13 @@ public class CreateQuestionsFromDaypo {
     private void printConsole(List<Question> questions) {
         if (questions != null) {
             for (Question question : questions) {
+                System.out.println(question.getId());
                 System.out.println(question.getQuestion());
+                System.out.println(question.getElection());
+                System.out.println("Solutions");
+                for (String solution : question.getSolutions()) {
+                    System.out.println(solution);
+                }
             }
         }
     }

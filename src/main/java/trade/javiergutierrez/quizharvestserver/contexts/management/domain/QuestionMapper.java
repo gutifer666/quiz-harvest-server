@@ -12,24 +12,24 @@ public class QuestionMapper {
     public static Question  map(trade.javiergutierrez.quizharvestserver.contexts.management.domain.Question questionManagement) {
         Long id = questionManagement.getId();
         String textQuestion = questionManagement.getQuestion();
-        List<Option> options = getOptions();
+        List<Option> options = getOptions(questionManagement);
         Subject subject = getSubject();
         Evaluation evaluation = getEvaluation();
         return new Question(id, textQuestion, options, subject, evaluation);
     }
 
-    private static List<Option> getOptions() {
+    private static List<Option> getOptions(trade.javiergutierrez.quizharvestserver.contexts.management.domain.Question questionManagement) {
        List<Option> options = new ArrayList<>();
        for (int i = 0; i < 4; i++) {
            options.add(i, new Option(i+1,
-                               getOptionText(i),
+                               getOptionText(questionManagement, i),
                                 false));
        }
         return options;
     }
-    // TODO: Implement this method
-    private static String getOptionText(int i) {
-        return "Option " + i;
+
+    private static String getOptionText(trade.javiergutierrez.quizharvestserver.contexts.management.domain.Question questionManagement, int i) {
+        return questionManagement.getSolutions().get(i);
     }
     // TODO: Implement this method
     private static Subject getSubject() {

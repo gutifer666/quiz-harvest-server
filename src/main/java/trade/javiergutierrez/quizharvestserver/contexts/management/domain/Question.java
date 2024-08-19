@@ -32,4 +32,7 @@ public class Question {
     }
 
 
+    public String getElection() {
+        return this.election;
+    }
 }
