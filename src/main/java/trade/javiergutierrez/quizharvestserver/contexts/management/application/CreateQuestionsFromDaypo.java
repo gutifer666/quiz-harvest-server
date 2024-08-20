@@ -8,7 +8,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import trade.javiergutierrez.quizharvestserver.contexts.management.domain.Question;
 import trade.javiergutierrez.quizharvestserver.contexts.management.domain.QuestionMapper;
-import trade.javiergutierrez.quizharvestserver.contexts.management.domain.SetOfQuestions;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -35,55 +34,6 @@ public class CreateQuestionsFromDaypo {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public void execute(MultipartFile file) {
-        Document document = formatXML(file);
-        List<Question> questions = null;
-        List<trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Question> questionsMapped = new ArrayList<>();
-
-        if (document != null) {
-            questions = createQuestionsFromXML(document);
-        }
-        for (Question question : questions) {
-            questionsMapped.add(QuestionMapper.map(question));
-        }
-/*        System.out.println("Questions not mapped");
-        printConsole(questions);*/
-        System.out.println("Questions mapped");
-        printConsoleQuestionsMapped(questionsMapped);
-        questionService.createQuestions(questionsMapped);
-
-    }
-
-    private void printConsoleQuestionsMapped(List<trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Question> questionsMapped) {
-        if (questionsMapped != null) {
-            for (trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Question question : questionsMapped) {
-                System.out.println(question.getId());
-                System.out.println(question.getTextQuestion());
-                for (trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Option option : question.getOptions()) {
-                    System.out.println(option.getId());
-                    System.out.println(option.getTextOption());
-                    System.out.println(option.isCorrect());
-                }
-                System.out.println(question.getSubject());
-                System.out.println(question.getEvaluation());
-            }
-        }
-    }
-
-    private void printConsole(List<Question> questions) {
-        if (questions != null) {
-            for (Question question : questions) {
-                System.out.println(question.getId());
-                System.out.println(question.getQuestion());
-                System.out.println(question.getElection());
-                System.out.println("Solutions");
-                for (String solution : question.getSolutions()) {
-                    System.out.println(solution);
-                }
-            }
-        }
     }
 
     private List<Question> createQuestionsFromXML(Document document) {
@@ -125,5 +75,19 @@ public class CreateQuestionsFromDaypo {
             }
         }
         return null;
+    }
+
+    public void execute(MultipartFile file) {
+        Document document = formatXML(file);
+        List<Question> questions = null;
+        List<trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Question> questionsMapped = new ArrayList<>();
+
+        if (document != null) {
+            questions = createQuestionsFromXML(document);
+        }
+        for (Question question : questions) {
+            questionsMapped.add(QuestionMapper.map(question));
+        }
+        questionService.createQuestions(questionsMapped);
     }
 }
