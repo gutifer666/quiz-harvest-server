@@ -18,6 +18,12 @@ import java.util.Objects;
 
 @Controller
 public class CreateQuestionsFromDaypo {
+    QuestionService questionService;
+
+    public CreateQuestionsFromDaypo(QuestionService questionService) {
+        this.questionService = questionService;
+    }
+
     private Document formatXML(MultipartFile file) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -46,6 +52,7 @@ public class CreateQuestionsFromDaypo {
         printConsole(questions);*/
         System.out.println("Questions mapped");
         printConsoleQuestionsMapped(questionsMapped);
+        questionService.createQuestions(questionsMapped);
 
     }
 

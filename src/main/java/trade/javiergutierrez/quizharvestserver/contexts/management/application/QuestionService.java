@@ -28,4 +28,8 @@ public class QuestionService {
         Evaluation evaluationEnum = Evaluation.valueOf(evaluation.toUpperCase());
         return questionRepository.bySubjectAndEvaluation(subjectEnum, evaluationEnum);
     }
+
+    public void createQuestions(List<Question> questions) {
+        questionRepository.saveAll(questions);
+    }
 }

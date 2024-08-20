@@ -44,6 +44,9 @@ public class MySQLQuestionRepository implements QuestionRepository {
 
     @Override
     public void save(Question question) {
+        if (question.getId() == null) {
+            throw new IllegalArgumentException("Question ID cannot be null");
+        }
     String questionSql = "INSERT INTO question (id, text_question, subject, evaluation) VALUES (?, ?, ?, ?) " +
                          "ON DUPLICATE KEY UPDATE text_question = VALUES(text_question), subject = VALUES(subject), evaluation = VALUES(evaluation)";
     template.update(questionSql, question.getId(), question.getTextQuestion(), question.getSubject().toString(), question.getEvaluation().toString());
@@ -61,5 +64,12 @@ public class MySQLQuestionRepository implements QuestionRepository {
         template.update(optionSql, id);
         String questionSql = "DELETE FROM question WHERE id = ?";
         template.update(questionSql, id);
+    }
+
+    @Override
+    public void saveAll(List<Question> questions) {
+        for (Question question : questions) {
+            save(question);
+        }
     }
 }

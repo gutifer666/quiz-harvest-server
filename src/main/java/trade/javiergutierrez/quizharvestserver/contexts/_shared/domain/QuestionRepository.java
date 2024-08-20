@@ -11,4 +11,6 @@ public interface QuestionRepository {
     void save(Question question);
 
     void delete(String id);
+
+    void saveAll(List<Question> questions);
 }

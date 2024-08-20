@@ -10,7 +10,7 @@ import java.util.List;
 
 public class QuestionMapper {
     public static Question  map(trade.javiergutierrez.quizharvestserver.contexts.management.domain.Question questionManagement) {
-        Long id = questionManagement.getId();
+        Long id = generateUniqueId();
         String textQuestion = questionManagement.getQuestion();
         List<Option> options = getOptions(questionManagement);
         Subject subject = getSubject();
@@ -18,10 +18,14 @@ public class QuestionMapper {
         return new Question(id, textQuestion, options, subject, evaluation);
     }
 
+    private static Long generateUniqueId() {
+        return (long) (Math.random() * 1000);
+    }
+
     private static List<Option> getOptions(trade.javiergutierrez.quizharvestserver.contexts.management.domain.Question questionManagement) {
        List<Option> options = new ArrayList<>();
        for (int i = 0; i < 4; i++) {
-           options.add(i, new Option(i+1,
+           options.add(i, new Option(generateUniqueId(),
                                         getOptionText(questionManagement, i),
                                         isCorrectOption(questionManagement.getElection(), i)));
        }
