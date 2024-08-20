@@ -22,8 +22,8 @@ public class QuestionMapper {
        List<Option> options = new ArrayList<>();
        for (int i = 0; i < 4; i++) {
            options.add(i, new Option(i+1,
-                               getOptionText(questionManagement, i),
-                                false));
+                                        getOptionText(questionManagement, i),
+                                        isCorrectOption(questionManagement.getElection(), i)));
        }
         return options;
     }
@@ -38,5 +38,9 @@ public class QuestionMapper {
     // TODO: Implement this method
     private static Evaluation getEvaluation() {
         return Evaluation.FIRST;
+    }
+
+    private static boolean isCorrectOption(String election, int i) {
+        return election.charAt(i) != '1';
     }
 }

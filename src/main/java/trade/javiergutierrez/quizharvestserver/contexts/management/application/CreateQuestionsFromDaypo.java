@@ -42,8 +42,8 @@ public class CreateQuestionsFromDaypo {
         for (Question question : questions) {
             questionsMapped.add(QuestionMapper.map(question));
         }
-        System.out.println("Questions not mapped");
-        printConsole(questions);
+/*        System.out.println("Questions not mapped");
+        printConsole(questions);*/
         System.out.println("Questions mapped");
         printConsoleQuestionsMapped(questionsMapped);
 
