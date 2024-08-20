@@ -7,6 +7,7 @@ import trade.javiergutierrez.quizharvestserver.contexts._shared.domain.Subject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class QuestionMapper {
     public static Question  map(trade.javiergutierrez.quizharvestserver.contexts.management.domain.Question questionManagement) {
@@ -19,7 +20,8 @@ public class QuestionMapper {
     }
 
     private static Long generateUniqueId() {
-        return (long) (Math.random() * 1000);
+        UUID uuid = UUID.randomUUID();
+        return Math.abs(uuid.getMostSignificantBits());
     }
 
     private static List<Option> getOptions(trade.javiergutierrez.quizharvestserver.contexts.management.domain.Question questionManagement) {
